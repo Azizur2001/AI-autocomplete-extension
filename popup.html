@@ -1,0 +1,213 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>AutoTab</title>
+    <script src="popup.js" defer></script>
+  </head>
+  <body>
+    <h1>AutoTab AI</h1>
+    <button id="toggle">Enable AI</button>
+  </body>
+</html> -->
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>AutoTab Settings</title>
+    <script src="popup.js" defer></script>
+  </head>
+  <body>
+    <h1>AutoTab AI Settings</h1>
+
+    <label>Preferred Writing Style:</label>
+    <select id="writingStyle">
+      <option value="concise">Concise</option>
+      <option value="detailed" selected>Detailed</option>
+      <option value="formal">Formal</option>
+      <option value="casual">Casual</option>
+    </select>
+
+    <label>Max Completion Length:</label>
+    <input type="number" id="maxTokens" min="50" max="300" value="150" />
+
+    <label>Preferred AI Model:</label>
+    <select id="aiModel">
+      <option value="deepseek-chat-7b" selected>DeepSeek Chat</option>
+      <option value="deepseek-coder-33b">DeepSeek Coder</option>
+      <option value="mixtral">Mixtral</option>
+      <option value="llama3-8b">Llama 3-8B</option>
+    </select>
+
+    <button id="saveSettings">Save Settings</button>
+  </body>
+</html> -->
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>AutoTab Settings</title>
+    <link rel="stylesheet" href="popup.css" />
+    <script src="popup.js" defer></script>
+  </head>
+  <body>
+    <div class="popup-container">
+      <h1>AutoTab AI</h1>
+
+      <label for="writingStyle">Writing Style:</label>
+      <select id="writingStyle">
+        <option value="concise">Concise</option>
+        <option value="detailed" selected>Detailed</option>
+        <option value="formal">Formal</option>
+        <option value="casual">Casual</option>
+      </select>
+
+      <label for="maxTokens">Completion Length:</label>
+      <input type="number" id="maxTokens" min="50" max="300" value="150" />
+
+      <label for="aiModel">AI Model:</label>
+      <select id="aiModel">
+        <option value="deepseek-chat-7b" selected>DeepSeek Chat</option>
+        <option value="deepseek-coder-33b">DeepSeek Coder</option>
+        <option value="mixtral">Mixtral</option>
+        <option value="llama3-8b">Llama 3-8B</option>
+      </select>
+
+      <button
+        id="saveSettings"
+        style="
+          display: block;
+          margin: 10px auto;
+          padding: 6px 12px;
+          font-size: 14px;
+          background-color: #5e3a9e;
+          color: white;
+          border: none;
+          border-radius: 8px;
+          cursor: pointer;
+        "
+      >
+        Save Settings
+      </button>
+    </div>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>AutoTab AI Settings</title>
+    <link rel="stylesheet" href="popup.css" />
+    <script src="popup.js" defer></script>
+  </head>
+  <body>
+    <div
+      class="popup-container"
+      style="
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 15px;
+      "
+    >
+      <h1
+        style="
+          font-size: 20px;
+          font-weight: bold;
+          color: white;
+          text-align: center;
+        "
+      >
+        AutoTab AI
+      </h1>
+
+      <!-- Writing Style Selection -->
+      <label
+        for="writingStyle"
+        style="text-align: left; width: 100%; font-weight: bold"
+        >Writing Style:</label
+      >
+      <select
+        id="writingStyle"
+        style="
+          width: 90%;
+          padding: 10px;
+          background-color: #eae2ff;
+          color: black;
+          border: none;
+          border-radius: 12px;
+        "
+      >
+        <option value="concise">Concise</option>
+        <option value="detailed" selected>Detailed</option>
+        <option value="formal">Formal</option>
+        <option value="casual">Casual</option>
+      </select>
+
+      <!-- Completion Length Input -->
+      <label
+        for="maxTokens"
+        style="text-align: left; width: 100%; font-weight: bold"
+        >Completion Length:</label
+      >
+      <input
+        type="number"
+        id="maxTokens"
+        min="50"
+        max="300"
+        value="150"
+        style="
+          width: 90%;
+          padding: 10px;
+          background-color: #eae2ff;
+          color: black;
+          border: none;
+          border-radius: 12px;
+          text-align: center;
+        "
+      />
+
+      <!-- AI Model Selection -->
+      <label
+        for="aiModel"
+        style="text-align: left; width: 100%; font-weight: bold"
+        >AI Model:</label
+      >
+      <select
+        id="aiModel"
+        style="
+          width: 90%;
+          padding: 10px;
+          background-color: #eae2ff;
+          color: black;
+          border: none;
+          border-radius: 12px;
+        "
+      >
+        <option value="deepseek-chat-7b" selected>DeepSeek Chat</option>
+        <option value="deepseek-coder-33b">DeepSeek Coder</option>
+        <option value="mixtral">Mixtral</option>
+        <option value="llama3-8b">Llama 3-8B</option>
+      </select>
+
+      <!-- Save Settings Button (Smaller & Centered) -->
+      <button
+        id="saveSettings"
+        style="
+          display: block;
+          width: 50%;
+          margin: 10px auto;
+          padding: 8px;
+          font-size: 14px;
+          background-color: #5e3a9e;
+          color: white;
+          border: none;
+          border-radius: 8px;
+          cursor: pointer;
+        "
+      >
+        Save Settings
+      </button>
+    </div>
+  </body>
+</html>

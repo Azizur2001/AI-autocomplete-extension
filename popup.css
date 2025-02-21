@@ -1,0 +1,70 @@
+/* Water Purple Theme */
+:root {
+  --main-bg: #7048e8; /* Purple background */
+  --button-bg: #6a4bb4; /* Slightly darker purple */
+  --text-color: #fff; /* White text */
+  --input-bg: #eae2ff; /* Light purple */
+  --border-radius: 12px;
+}
+
+body {
+  width: 280px;
+  background: var(--main-bg);
+  color: var(--text-color);
+  font-family: "Arial", sans-serif;
+  text-align: center;
+  padding: 15px;
+  border-radius: var(--border-radius);
+}
+
+/* Popup Container */
+.popup-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Headings */
+h1 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+/* Labels */
+label {
+  font-size: 14px;
+  font-weight: bold;
+  text-align: left;
+  display: block;
+  margin-top: 8px;
+}
+
+/* Dropdowns & Inputs */
+select,
+input {
+  background: var(--input-bg);
+  color: #333;
+  border: none;
+  padding: 8px;
+  width: 90%;
+  font-size: 14px;
+  border-radius: var(--border-radius);
+  outline: none;
+  text-align: center;
+}
+
+/* Button */
+button {
+  background: var(--button-bg);
+  color: var(--text-color);
+  border: none;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #5e3a9e; /* Slightly darker purple */
+}
