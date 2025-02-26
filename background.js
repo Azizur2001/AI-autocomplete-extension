@@ -163,13 +163,77 @@
 //   }
 // });
 
-// deepseek
+// // deepseek
+// chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+//   if (message.type === "FETCH_AI_COMPLETION") {
+//     chrome.storage.local.get(
+//       ["writingStyle", "maxTokens", "aiModel"],
+//       (settings) => {
+//         const { url, title, userInput } = message.context;
+
+//         let toneInstruction = "";
+//         if (settings.writingStyle === "concise")
+//           toneInstruction = "Keep responses short and to the point.";
+//         if (settings.writingStyle === "detailed")
+//           toneInstruction = "Provide an in-depth, well-developed continuation.";
+//         if (settings.writingStyle === "formal")
+//           toneInstruction = "Use professional and formal language.";
+//         if (settings.writingStyle === "casual")
+//           toneInstruction = "Use relaxed, conversational wording.";
+
+//         fetch("https://api.deepseek.com/v1/chat/completions", {
+//           method: "POST",
+//           headers: {
+//             "Content-Type": "application/json",
+//             Authorization: `Bearer sk-f5c6d2d998624435a09aef3b2eb31b71`,
+//           },
+//           body: JSON.stringify({
+//             model: settings.aiModel || "deepseek-chat-7b", // Default to DeepSeek Chat
+//             messages: [
+//               {
+//                 role: "system",
+//                 content: `You are an AI writing assistant. The user is on "${title}" (${url}).
+//                           ${toneInstruction}
+//                           Generate text that flows naturally with what the user is writing.`,
+//               },
+//               {
+//                 role: "user",
+//                 content: `User is typing: "${userInput}".
+//                           Provide a logical and well-structured continuation, aiming for at least 100 words if possible.`,
+//               },
+//             ],
+//             max_tokens: settings.maxTokens || 150, // Default to 150 if not set
+//             temperature: 0.7,
+//             top_p: 0.95,
+//             frequency_penalty: 0.2,
+//             presence_penalty: 0.3,
+//           }),
+//         })
+//           .then((response) => response.json())
+//           .then((data) => {
+//             if (data.choices && data.choices.length > 0) {
+//               sendResponse({ completion: data.choices[0].message.content });
+//             } else {
+//               sendResponse({ completion: "" });
+//             }
+//           })
+//           .catch((error) => {
+//             console.error("DeepSeek API Request Failed:", error);
+//             sendResponse({ completion: "" });
+//           });
+
+//         return true; // Keep async response open
+//       }
+//     );
+//   }
+// });
+
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.type === "FETCH_AI_COMPLETION") {
     chrome.storage.local.get(
       ["writingStyle", "maxTokens", "aiModel"],
       (settings) => {
-        const { url, title, userInput } = message.context;
+        const { url, title, conversationHistory } = message.context;
 
         let toneInstruction = "";
         if (settings.writingStyle === "concise")
@@ -185,28 +249,33 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer sk-f5c6d2d998624435a09aef3b2eb31b71`,
+            Authorization: `Bearer YOUR_DEEPSEEK_API_KEY`,
           },
           body: JSON.stringify({
-            model: settings.aiModel || "deepseek-chat-7b", // Default to DeepSeek Chat
+            model: settings.aiModel || "deepseek-chat-7b",
             messages: [
               {
                 role: "system",
-                content: `You are an AI writing assistant. The user is on "${title}" (${url}).
-                          ${toneInstruction} 
-                          Generate text that flows naturally with what the user is writing.`,
+                content: `You are an AI autocomplete assistant.
+                        The user is typing on a website titled "${title}" (${url}).
+                        Your goal is to generate **highly predictive, logical completions** based on the ongoing conversation.
+                        Use the conversation history to understand the topic and suggest meaningful continuations.
+                        ${toneInstruction}`,
               },
               {
                 role: "user",
-                content: `User is typing: "${userInput}".
-                          Provide a logical and well-structured continuation, aiming for at least 100 words if possible.`,
+                content: `Here is the conversation so far:
+                        "${conversationHistory}"
+
+                        Predict what the user is likely to type next.
+                        Ensure the response is **detailed, natural, and at least 60-100 words long**.`,
               },
             ],
-            max_tokens: settings.maxTokens || 150, // Default to 150 if not set
-            temperature: 0.7,
-            top_p: 0.95,
+            max_tokens: settings.maxTokens || 250, // ⬆️ Increased length
+            temperature: 0.8, // ⬆️ More creativity
+            top_p: 0.9, // ⬆️ Keep it diverse but logical
             frequency_penalty: 0.2,
-            presence_penalty: 0.3,
+            presence_penalty: 0.5, // ⬆️ Encourage new ideas
           }),
         })
           .then((response) => response.json())
