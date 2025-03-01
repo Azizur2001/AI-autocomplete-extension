@@ -25,4 +25,4 @@ chrome.storage.local.get(["writingStyle", "maxTokens", "aiModel"], (data) => {
   if (data.aiModel) document.getElementById("aiModel").value = data.aiModel;
 });
 
-// 
+// fgfg
