@@ -1,11 +1,3 @@
-// document.getElementById("toggle").addEventListener("click", () => {
-//   chrome.storage.local.get("enabled", (data) => {
-//     const newState = !data.enabled;
-//     chrome.storage.local.set({ enabled: newState });
-//     alert(newState ? "AI Enabled" : "AI Disabled");
-//   });
-// });
-
 document.getElementById("saveSettings").addEventListener("click", () => {
   const writingStyle = document.getElementById("writingStyle").value;
   const maxTokens = parseInt(document.getElementById("maxTokens").value);
@@ -24,5 +16,3 @@ chrome.storage.local.get(["writingStyle", "maxTokens", "aiModel"], (data) => {
     document.getElementById("maxTokens").value = data.maxTokens;
   if (data.aiModel) document.getElementById("aiModel").value = data.aiModel;
 });
-
-// fgfgddf
