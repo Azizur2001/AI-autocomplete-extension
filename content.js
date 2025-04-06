@@ -207,7 +207,7 @@ function attachAIHandler(element) {
         }
       );
     }, 500)
-  ); // Slightly increased debounce to reduce lag
+  ); 
 
   element.addEventListener("keydown", (event) => {
     if (event.key === "Tab") {

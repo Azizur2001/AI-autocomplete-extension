@@ -1,9 +1,9 @@
 /* Water Purple Theme */
 :root {
-  --main-bg: #7048e8; /* Purple background */
-  --button-bg: #6a4bb4; /* Slightly darker purple */
-  --text-color: #fff; /* White text */
-  --input-bg: #eae2ff; /* Light purple */
+  --main-bg: #7048e8; 
+  --button-bg: #6a4bb4; 
+  --text-color: #fff; 
+  --input-bg: #eae2ff; 
   --border-radius: 12px;
 }
 
